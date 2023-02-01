@@ -1,0 +1,307 @@
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+
+:root{
+    user-select: none;
+    --box-size: 100px;
+    --mark-size: calc(var(--box-size) * 90%);  /* mark size will be 90% of the box size*/
+    --font-Style: 'Fredoka One', cursive;
+    --transparentCol : rgba(102, 102, 102, 0.412);
+    --modalCol:rgb(214, 214, 214); 
+    --primaryColor: rgb(255, 157, 0);
+    --playerX-font-accentCol:#ec1450;
+    --playerO-font-accentCol:#04baad;
+    --gameBoardCol:var(--transparentCol);
+    --scoreCardCol:var(--transparentCol);
+    --perBoxColor:#100f31;
+    --main-Button-bgCol: var(--primaryColor);
+    --quitBtnCol:var(--perBoxColor);
+}
+
+body{
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    font-family: var(--font-Style);
+    background-color: rgb(210, 210, 210);
+}
+
+.flexB{
+   display: flex;
+}
+
+.grid{
+    display:grid;
+    gap: 3rem;
+}
+
+.playerNamesInputModal{
+    position: absolute;
+    inset: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:var(--modalCol);
+    z-index: 2;
+    transition: translate 300ms;
+
+}
+
+.playerNamesInputModal.disappearFromTheTop{
+  translate: 0 -900px;
+}
+
+
+
+.playersInputForm{
+    padding: 3em;
+    border-radius: 1rem;
+    flex-direction: column;
+    -webkit-box-shadow: -1px 10px 16px 7px rgba(0,0,0,0.52);
+    -moz-box-shadow: -1px 10px 16px 7px rgba(0,0,0,0.52);
+    box-shadow: -1px 10px 16px 7px rgba(0,0,0,0.52);
+}
+
+.playersInputForm h1{
+    font-size: 5.5rem;
+}
+
+.playersInputForm :is(.heading-X,.heading-O){
+   background-color: var(--perBoxColor);
+   padding: 0 1rem;
+   border-radius: 1rem;
+}
+
+.playersInputForm h1 .heading-X{
+    color: var(--playerX-font-accentCol);
+}
+
+.playersInputForm h1 .heading-O{
+    color: var(--playerO-font-accentCol);
+}
+
+
+
+.playersNameInputs{
+    flex-direction: column;
+    gap: .5em;
+}
+/* Players name inputs placeholder selector */
+::placeholder{
+    color: rgba(255, 255, 255, 0.805);
+
+}
+
+/* Player X input */
+#X{   
+    background-image: url("images/X.png");
+    color: var(--playerX-font-accentCol);
+}
+/* Player O input */
+#O{
+    background-image: url("images/O.png");
+    color: var(--playerO-font-accentCol);
+}
+
+
+:is(#X, #O){
+    background-repeat: no-repeat;
+    background-size: 5%;
+    background-position: 10px center;
+    min-height: 2rem;
+    border-radius: .5rem;
+    border: none;
+    background-color: #101032;
+    padding-left: 12%;
+    font-size: 1rem;
+}
+
+.start{
+    position: relative;
+    border: none;
+    font-size: 1.5rem;
+    width: 15rem;
+    padding: .3em 0;
+    border-radius: 2em;
+    background-color: var(--main-Button-bgCol);
+    color: #fff;
+    margin: 1.5rem auto 0 auto;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.start:hover{
+    translate: 0 -4px;
+}
+
+.start.error{
+    background-color: red;
+    animation: Left-right-movement 300ms 2 alternate-reverse;
+}
+
+@keyframes Left-right-movement {
+    0%{
+        transform:translateX(.5rem) 
+    }
+    25%{
+        transform:translateX(-.5rem) 
+    }
+   
+}
+
+
+.scoreCardSection{
+    --radius: 1em;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    border-radius: var(--radius);
+    
+}
+
+.scoreCard{
+    background-color: var(--scoreCardCol);
+    color: #fff;
+    padding: .5em 0;
+    width: 40%;
+    border-radius: var(--radius);
+}
+
+:is(.playerXname, .playerOname){
+    word-wrap: break-word;
+    width: 25%;
+}
+
+.playerXname{
+    color: var(--playerX-font-accentCol);
+}
+.playerOname{
+    color: var(--playerO-font-accentCol);
+}
+
+
+
+.gameBoard{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color:var(--gameBoardCol);
+    padding: .8em;
+    border-radius: 1.5em;
+    gap: .7em;
+
+    /* shadow for the gameboard */
+    -webkit-box-shadow: -1px 10px 16px 7px rgba(0,0,0,0.52);
+    -moz-box-shadow: -1px 10px 16px 7px rgba(0,0,0,0.52);
+    box-shadow: -1px 10px 16px 7px rgba(0,0,0,0.52);
+    
+}
+
+
+/* Individual box of the gameboard */
+.box{
+    background-color: var(--perBoxColor);
+    border-radius: .3em;
+    border: none;
+    width: var(--box-size);
+    height:var(--box-size);
+    border: 2px solid var(--gameBoardLinesCol);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 5rem;
+    transition: font-size 200ms;
+}
+
+/* X marker on the gameBoard*/
+.box.X::before{
+    content: "X";
+    color: var(--playerX-font-accentCol);
+}
+
+/* O marker on the gameBoard */
+.box.O::before{
+    content:"O";
+    color: var(--playerO-font-accentCol);
+}
+ 
+
+/* if one of the boxes has the class or .X or .O */
+.box:is(.X:hover, .O:hover){
+    border:.1em solid red ;
+}
+/* if user tries to click on one of the used box */
+.box:is(.X:active, .O:active){
+    background-color: rgba(255, 0, 0, 0.428);
+}
+
+.box:hover{
+    border: .1em solid #fff;
+}
+
+
+
+
+ .box.unclickable:active{
+    pointer-events: none;
+    border:.1em solid red ;
+ }
+
+
+.restart{
+    position: relative;
+    background-color: #fff;
+    border: none;
+    padding: .5em 1.5em;
+    cursor: pointer;
+    transition: 300ms;
+    z-index: 1;
+}
+
+.restart:hover{  /*Moves button top and bottom*/
+    color: #fff;
+}
+
+.restart.sideAnimation::after{ /*Moves orange bgcolor top bottom*/
+    content:"";
+    background-color:var(--main-Button-bgCol);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 300ms ease-out;
+}
+
+.restart.sideAnimation:hover::after{
+    transform: scaleX(1);
+}
+
+.quit{
+    position: relative;
+    background-color: var(--quitBtnCol);
+    color: #fff;
+    border: none;
+    border-radius: 2em;
+    width: 5em;
+    padding: .3em;
+    font-size: 1.2rem;
+    transform: translateX(130px);
+}
+
+.quit:hover{
+    background-color: #ec1450;
+}
+
+
+
+
+
+
+
+

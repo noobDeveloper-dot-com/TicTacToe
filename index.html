@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+     
+    <!-- logo for tab -->
+    <link rel="icon" type="image/png" sizes="50x50" href="svgs\SVG\Asset 2.svg">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Script Link -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <main>
+
+       <section class="playerNamesInputModal flexB" id="playerNamesInputModal">
+
+        <form action="#"  class ="playersInputForm flexB " id ="players">
+
+            <h1><span class="heading-X">X</span> <span class="heading-O">O</span> </h1>
+
+                <section class="playersNameInputs flexB">
+                    <input type="text" name="X" id="X" placeholder="Player One">
+
+                    <input type="text" name="O" id="O" placeholder="Player Two">
+                </section>
+                
+            
+            <button class="start" id="start">Start</button>
+        </form>
+
+       </section>
+
+
+       <!-- ScoreCard -->
+
+       <section class="scoreCardSection flexB" id="scoreCardSection">
+        <div class="playerXname" id="playerXname"></div>
+        <div class="scoreCard"><span id="playerXScore" class="playerXScore">0</span> | <span id="playerOScore" class="playerOScore">0</span></div>
+        <div class="playerOname" id="playerOname"></div>
+       </section>
+
+       
+       <section class="gameBoardWrapper grid">
+        <section class="displayStatus">
+            <h1 class="title" id="winLoseDrawStatus">LET'S PLAY!!</h1>
+            <button class="restart sideAnimation" id="restart">Restart</button>
+        </section>
+     
+        <section class="gameBoard" id="gameBoard">
+            <div class="box" data-box = "0"></div>
+            <div class="box" data-box = "1"></div>
+            <div class="box" data-box = "2"></div>
+            <div class="box" data-box = "3"></div>
+            <div class="box" data-box = "4"></div>
+            <div class="box" data-box = "5"></div>
+            <div class="box" data-box = "6"></div>
+            <div class="box" data-box = "7"></div>
+            <div class="box" data-box = "8"></div>
+        </section>
+        <button class="quit questionMark" id="quit">Quit</button>
+       </section>
+    </main>
+    
+</body>
+</html>
