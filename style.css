@@ -59,6 +59,8 @@ body{
 
 
 .playersInputForm{
+    position: relative;
+    z-index: 1;
     padding: 3em;
     border-radius: 1rem;
     flex-direction: column;
@@ -283,20 +285,59 @@ body{
 }
 
 .quit{
+    --transistion: 300ms;
+    --radius:2em;
     position: relative;
     background-color: var(--quitBtnCol);
     color: #fff;
     border: none;
-    border-radius: 2em;
+    border-radius: var(--radius);
     width: 5em;
     padding: .3em;
     font-size: 1.2rem;
-    transform: translateX(130px);
+    cursor: pointer;
+    transition: var(--transistion);
 }
 
-.quit:hover{
-    background-color: #ec1450;
+.quit-and-githubLink{
+    justify-content: center;
+    gap: .5em;
 }
+
+.quit::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 1;
+    border-radius: var(--radius);
+    background-color: var(--transparentCol);
+    background-image: url("svgs/Quit Arrow.svg");
+    background-repeat: no-repeat;
+    background-size: 1.5rem;
+    background-position: .5rem;
+    z-index: -1;
+    transition:var(--transistion);
+}
+
+.quit:hover::before{
+    opacity: 1;
+    right: .8em;
+    transform: translateX(-25px);
+}
+
+
+.githubLogo{
+    --length:2rem;
+    width:var(--length);
+    height: var(--length);
+    transition: 500ms ease-out;
+}
+
+
+.githubLogo:hover{
+    transform: rotate(360deg);
+}
+
 
 
 
